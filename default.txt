@@ -1,0 +1,32 @@
+commands
+git --version
+mkdir name
+cd name
+git init
+create a new text file in folder
+git status
+git add f1.txt
+git status
+git config --global user.email "emailid"
+git commit -m "commit"
+open github account create a repo
+git remote add origin git link
+git push origin master
+git log
+vim f1.txt
+git diff f1.txt
+#pulling
+#create a new folder
+mkdir name
+cd name
+mkdir changes
+git init
+git pull git link
+git status
+#make changes in file
+git add . 
+git status
+git commit -m "changes"
+git remote add origin git link
+git push -u origin master
+git log
