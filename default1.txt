@@ -1,0 +1,25 @@
+#docker commands
+sudo apt-get install docker.io
+docker --version
+mkdir test
+cd test
+touch demo.txt
+touch Dockerfile
+ls
+nano Dockerfile
+FROM ubuntu
+COPY . .
+CMD ["echo", "Hello World"]
+ls
+sudo docker build -t mydocker .
+sudo docker images
+sudo docker run -it mydocker bash
+#pulling an image
+sudo docker pull image
+docker images
+sudo docker run -it ubuntu bash
+sudo docker ps -a
+sudo docker stop container id
+sudo docker rm container id
+sudo docker rmi ubuntu
+docker images
