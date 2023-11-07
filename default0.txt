@@ -1,0 +1,147 @@
+#stateandprops
+import React, { Component } from "react"
+import ReactDOM from 'react-dom';
+import './index.css';
+
+const Cars = (props) => {
+
+    return (
+        <div className="cars">
+            <h1>List of Super Cars</h1>
+            <p>Name: {props.cars.name}</p>
+            <p>Brand: {props.cars.brand}</p>
+        </div>
+    )
+}
+
+class Bike extends Component {
+    constructor() {
+        super()
+        this.state = {
+            bike: 'Yamaha'
+        }
+    }
+
+    changeMessage() {
+        this.setState({
+            bike: 'Bugati'
+        })
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <h1>{this.state.bike}</h1>
+                <button onClick={() => this.changeMessage()}>
+                    Change
+                </button>
+            </div>
+
+        )
+    }
+}
+
+function App() {
+    const cars =
+    {
+        name: "Audi",
+        brand: "Dugati"
+    } 
+
+    return (
+        <div className="App">
+            <Cars cars={cars} />
+            <hr></hr>
+            <Bike />
+        </div>
+    );
+}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+    <App />
+</React.StrictMode>
+);
+export default App;
+
+#formhandling
+import React, { useState } from 'react';
+function MyForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,}); };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here, e.g., send data to the server
+    console.log(formData);};
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        /></div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        /></div>
+      <button type="submit">Submit</button>
+    </form>); }
+export default MyForm;
+
+#react router
+npm install react-router-dom
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+const Home = () => <h2>Home</h2>;
+const About = () => <h2>About</h2>;
+const Contact = () => <h2>Contact</h2>;
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
